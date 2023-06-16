@@ -5,4 +5,10 @@
 - npm: node package manager
 	- gerenciador de pacotes do node
 - pasta node_modules onde ficam os módulos externos, deve ser descartável
+
+- o que são módulos?
+	- são scripts reaproveitáveis, divididos em três categorias:
+		- Internos: módulos que nós desenvolvemos
+		- Core Modules: módulos que vem com o node.js
+		- Externos: módulos que instalamos via npm 	
 	 	
