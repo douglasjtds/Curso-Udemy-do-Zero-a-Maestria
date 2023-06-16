@@ -1,0 +1,8 @@
+- node.js é um runtime do JavaScript
+- biblioteca utilizada por um compilador durante a execução de um programa
+- o código JS é compilado em C++ pra garantir alta performance
+
+- npm: node package manager
+	- gerenciador de pacotes do node
+- pasta node_modules onde ficam os módulos externos, deve ser descartável
+	 	
