@@ -11,4 +11,9 @@
 		- Internos: módulos que nós desenvolvemos
 		- Core Modules: módulos que vem com o node.js
 		- Externos: módulos que instalamos via npm 	
-	 	
+	- export e import
+	- módulos externos
+		- podem ser instalados via npm
+		- pra isso, precisa inicializar o npm no projeto usando npm init
+		- eles ficam salvos na pasta node_modules
+		- instala com npm install <nomedomodulo>
