@@ -17,3 +17,6 @@
 		- pra isso, precisa inicializar o npm no projeto usando npm init
 		- eles ficam salvos na pasta node_modules
 		- instala com npm install <nomedomodulo>
+- Lendo entrada de dados
+	- readline, um core module
+	- método question, pergunta ao usuário
