@@ -20,3 +20,6 @@
 - Lendo entrada de dados
 	- readline, um core module
 	- método question, pergunta ao usuário
+	- módulo externo: inquirer
+		- mais completo para resgatar e lidar com o input
+		- baseado em promises
