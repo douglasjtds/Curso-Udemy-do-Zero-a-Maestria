@@ -23,3 +23,7 @@
 	- módulo externo: inquirer
 		- mais completo para resgatar e lidar com o input
 		- baseado em promises
+
+- Event Loop
+	- O Node.js executa uma linha por vez, e de cima para baixo do código escrito;
+	- evita problemas de concorrência
