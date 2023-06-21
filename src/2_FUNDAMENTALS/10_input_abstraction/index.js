@@ -13,5 +13,8 @@ inquirer
   ])
   .then((answers) => {
     console.log(answers);
+    const average = (parseInt(answers.p1) + parseInt(answers.p2)) / 2;
+
+    console.log(`A média das notas é ${average}`);
   })
   .catch((err) => console.log(err));
