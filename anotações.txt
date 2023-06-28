@@ -36,4 +36,8 @@
 	- No node tem as duas opções:
 		- Síncrono: o código espera ser totalmente executado para prossegir
 		- Assíncrono: o código continua progredindo e em um ponto futuro obtém a resposta da execução assíncrona
-		
+
+- Tratamento de erros no Node
+	- duas formas de gerar e evidenciar erros:
+		- throw: encerra o programa gerando novo erro
+		- try catch: evidencia algo errado de um bloco de código e exibe a mensagem de erro

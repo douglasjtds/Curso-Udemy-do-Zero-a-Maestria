@@ -9,6 +9,6 @@
   "author": "Douglas Tertuliano",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^8.2.5"
+    "inquirer": "^8.1.2"
   }
 }
