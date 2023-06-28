@@ -27,3 +27,13 @@
 - Event Loop
 	- O Node.js executa uma linha por vez, e de cima para baixo do código escrito;
 	- evita problemas de concorrência
+- Event Emitter
+	- Se comporta como os eventos do navegador
+	- ativa o código em alguns pontos da aplicação
+	- Core Modules: events
+	- precisa instanciar a classe EventEmitter
+- Sync e Async
+	- No node tem as duas opções:
+		- Síncrono: o código espera ser totalmente executado para prossegir
+		- Assíncrono: o código continua progredindo e em um ponto futuro obtém a resposta da execução assíncrona
+		
