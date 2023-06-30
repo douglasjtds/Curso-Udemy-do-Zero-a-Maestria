@@ -11,7 +11,11 @@ inquirer.prompt([
     message: "What's your age? ",
   },
 ])
-.then((answers) =>
+.then((answers) => {
+    if(!answers.name || !answers.age){
+        throw new Error(chalk.red('Name and age are required properties!'))
+    }
     console.log(chalk.bgYellow.black(`Your name is ${answers.name}, and your age is ${answers.age}`))
+}
 )
 .catch((err) => console.log(err));
