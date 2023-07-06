@@ -41,3 +41,10 @@
 	- duas formas de gerar e evidenciar erros:
 		- throw: encerra o programa gerando novo erro
 		- try catch: evidencia algo errado de um bloco de código e exibe a mensagem de erro
+
+CORE MODULES:
+	- módulo http
+	- módulo url
+		- serve para decompor uma url que passamos para o método parse
+		- pode-se resgatar: host, path, search, query e etc...
+	
