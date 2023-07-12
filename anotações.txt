@@ -47,4 +47,11 @@ CORE MODULES:
 	- módulo url
 		- serve para decompor uma url que passamos para o método parse
 		- pode-se resgatar: host, path, search, query e etc...
-	
+	- módulo fs(file system)
+		- writeFile substitui tudo que tem num arquivo
+		- se quiser atualizar deve-se usar o appendFile
+		- método unlink para remover um arquivo usando o fs
+		- rename precisa passar o arquivo como parâmetro e o novo nome para renomear
+	- criar rotas com node.js puro
+		- podemos criar um sistema de roteamento simplesc om node e seus core Modules
+	- detalhes dos arquivos
