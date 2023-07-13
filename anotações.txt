@@ -55,3 +55,4 @@ CORE MODULES:
 	- criar rotas com node.js puro
 		- podemos criar um sistema de roteamento simplesc om node e seus core Modules
 	- detalhes dos arquivos
+	- módulo path
