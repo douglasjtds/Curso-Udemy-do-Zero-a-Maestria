@@ -1,0 +1,14 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "description": "my first npm project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Douglas Tertuliano",
+  "license": "ISC"
+}

@@ -56,3 +56,20 @@ CORE MODULES:
 		- podemos criar um sistema de roteamento simplesc om node e seus core Modules
 	- detalhes dos arquivos
 	- módulo path
+	- módulo OS
+
+NPM (Node Package Manager)
+	- é o principal gerenciador de pacotes do node.js
+	- podemos não só instalar pacotes, mas também configurar o projeto e rodar scripts por meio do npm
+	- a criação de um projeto sempre gera um arquivo, o package.json
+	- para iniciar um projeto, podemos utilizar o comando "npm init"
+	- o comando npm install <nome> instala um pacote com o nome que colocarmos
+	- sempre que instalamos um pacote, é criada a pasta node_modules
+	- sempre que rodamos o comando npm install a pasta node_modules é recriada com todos os módulos do package.json
+	- é possível criar rotinas com o npm e assim executar uma série de comandos com apenas um
+		- 'npm run <script>'
+	- podemos também instalar um pacote global que não fica salvo na pasta node_modules
+		- fica salvo na máquina
+		- a vantagem é que podemos acessá-lo em qualquer local via terminal
+		- utilizamos a 'flag -g' em 'node install'
+	- para remover um pacote, é possível utilizar o npm uninstall <nomedopacote>
