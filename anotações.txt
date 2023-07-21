@@ -73,3 +73,8 @@ NPM (Node Package Manager)
 		- a vantagem é que podemos acessá-lo em qualquer local via terminal
 		- utilizamos a 'flag -g' em 'node install'
 	- para remover um pacote, é possível utilizar o npm uninstall <nomedopacote>
+
+EXPRESS
+	- é um framework para node.js muito utilizado para criar aplicações web
+	- torna a criação de apps muito simplificada
+	- criar rotas, renderizar html, conectar no banco de dados...
