@@ -27,6 +27,16 @@ function operation(){
         
         if(action === 'Create account')
             createAccount()
+        else if (action === 'Check balance'){
+
+        }
+        else if (action === 'Deposit')
+            deposit()
+        else if (action === 'Withdraw'){}
+        else if (action === 'Exit'){
+            console.log(chalk.bgBlue.black('Thanks for using Accounts!'))
+            process.exit()
+        }
         
     })
     .catch((err) => console.log(err))
@@ -69,4 +79,68 @@ function buildAccount() {
         operation()
 
     }).catch((err) => console.log(err))
+}
+
+//add an amount to an user account
+function deposit () {
+    inquirer.prompt({
+        name: 'accountName',
+        message: 'Whats the name of your account?'
+    }).then((answer) => {
+        const accountName = answer['accountName']
+        
+        if(!checkAccount(accountName))
+            return deposit()
+
+        inquirer.prompt([
+            {
+                name: 'amount',
+                message: 'How much do you wanna deposit?'
+            }
+        ]).then((answer) => {
+            const amount = answer['amount']
+            addAmount(accountName, amount)
+
+            operation()
+        }).catch((err) => console.log(err))
+        
+    }).catch((err) => console.log(err))
+}
+
+///verify if account exists
+function checkAccount(accountName){
+    if (!fs.existsSync(`accounts/${accountName}.json`)){
+        console.log(chalk.bgRed.black('This account does not exists!'))
+        return false
+    }
+    return true
+}
+
+function getAccount(accountName) {
+    const accountJSON = fs.readFileSync(`accounts/${accountName}.json`, {
+        encoding: 'utf8',
+        flag: 'r'
+    })
+
+    return JSON.parse(accountJSON)
+}
+
+function addAmount(accountName, amount){
+    const accountData = getAccount(accountName)
+
+    if(!amount) {
+        console.log(chalk.bgRed.black('There was an error, please try again.'))
+        return deposit()
+    }
+
+    accountData.balance = parseFloat(amount) + parseFloat(accountData.balance)
+
+    //write the new account value on json file
+    fs.writeFileSync(`accounts/${accountName}.json`,
+    JSON.stringify(accountData),
+    function(err){
+        console.log(err)
+    })
+
+    console.log(chalk.green(`The amount of U$${amount} has been deposited into your account`))
 }
