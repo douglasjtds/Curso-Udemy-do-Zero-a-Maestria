@@ -18,6 +18,7 @@ function operation(){
                 'Check balance',
                 'Deposit',
                 'Withdraw',
+                'Transfer',
                 'Exit'
             ]
         }
@@ -32,6 +33,8 @@ function operation(){
             deposit()
         else if (action === 'Withdraw')
             withdrawn()
+        else if(action === 'Transfer')
+            transfer()
         else if (action === 'Exit'){
             console.log(chalk.bgBlue.black('Thanks for using Accounts!'))
             process.exit()
@@ -141,7 +144,7 @@ function addAmount(accountName, amount){
         console.log(err)
     })
 
-    console.log(chalk.green(`The amount of U$${amount} has been deposited into your account`))
+    console.log(chalk.green(`The amount of U$${amount} has been deposited into ${accountName}'s account.`))
 }
 
 //check account balance
@@ -219,5 +222,50 @@ function removeAmount(accountName, amount){
         }
     )
 
-    console.log(chalk.green(`The amount of U$${amount} has been withdrawn from your account.`))
+    console.log(chalk.green(`The amount of U$${amount} has been withdrawn from ${accountName}'s account.`))
+}
+
+
+//bonus exercise
+function transfer() {
+    inquirer.prompt([
+        {
+            name: 'originAccountName',
+            message: 'From which account do you want to take de money?'
+        }
+    ]).then((answer) => {
+        const accountOrigin = answer['originAccountName']
+        if(!checkAccount(accountOrigin))
+            return transfer()
+        
+
+        inquirer.prompt([{
+            name: 'value',
+            message: 'How much do you want to transfer?'
+        }]).then((answer) => {
+            
+            const valueToBeTransferred = answer['value']
+
+            if(getAccount(accountOrigin).balance < valueToBeTransferred){
+                console.log(chalk.bgRed.black('Unavailable value.'))
+                return transfer()
+            }
+
+            inquirer.prompt([{
+                name: 'destineAccountName',
+                message: 'Which account will the money be transferred to?'
+            }]).then((answer) => {
+                const destinAccount = answer['destineAccountName']
+                if(!checkAccount(destinAccount))
+                    return transfer()
+                
+                removeAmount(accountOrigin, valueToBeTransferred)
+                addAmount(destinAccount, valueToBeTransferred)
+                operation()
+                
+            }).catch((err) => console.log(err))
+
+        }).catch((err) => console.log(err))
+
+    }).catch((err) => console.log(err))
 }
