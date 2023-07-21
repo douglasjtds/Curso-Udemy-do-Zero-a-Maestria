@@ -1,13 +1,12 @@
 //external modules
-
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 
 // internal modules
 const fs = require('fs')
 
+//start program
 operation()
-
 function operation(){
     inquirer.prompt([
         {
@@ -31,7 +30,8 @@ function operation(){
             getAccountBalance()
         else if (action === 'Deposit')
             deposit()
-        else if (action === 'Withdraw'){}
+        else if (action === 'Withdraw')
+            withdrawn()
         else if (action === 'Exit'){
             console.log(chalk.bgBlue.black('Thanks for using Accounts!'))
             process.exit()
@@ -164,4 +164,60 @@ function getAccountBalance(){
         console.log(chalk.bgBlue.black(`Your account balance is U$${accountData.balance}`))
         operation()
     })
+}
+
+// withdrawn an amount from user account
+function withdrawn(){
+    inquirer.prompt([
+        {
+            name: 'accountName',
+            message: 'Which account do you want to withdrawn from? '
+        }
+    ]).then((answer) => {
+
+        const accountName = answer['accountName']
+
+        if(!checkAccount(accountName)){
+            return withdrawn()
+        }
+
+        inquirer.prompt([
+            {
+                name: 'amount',
+                message: 'How much do you want to withdrawn?'
+            }
+        ]).then((answer) => {
+
+            const amount = answer['amount']
+
+            removeAmount(accountName, amount)
+            operation()
+
+        }).catch((err) => console.log(err))
+
+    }).catch((err) => console.log(err))
+}
+
+function removeAmount(accountName, amount){
+    const accountData = getAccount(accountName)
+
+    if(!amount) {
+        console.log(chalk.bgRed.black('An error has occurred, please try again!'))
+        return withdrawn()
+    }
+
+    if(accountData.balance < amount){
+        console.log(chalk.bgRed.black('Unavailable value.'))
+    }
+    
+    accountData.balance = parseFloat(accountData.balance) - parseFloat(amount)
+
+    fs.writeFileSync(`accounts/${accountName}.json`,
+        JSON.stringify(accountData),
+        function(err){
+            console.log(err)
+        }
+    )
+
+    console.log(chalk.green(`The amount of U$${amount} has been withdrawn from your account.`))
 }
