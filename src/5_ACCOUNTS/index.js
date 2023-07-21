@@ -27,9 +27,8 @@ function operation(){
         
         if(action === 'Create account')
             createAccount()
-        else if (action === 'Check balance'){
-
-        }
+        else if (action === 'Check balance')
+            getAccountBalance()
         else if (action === 'Deposit')
             deposit()
         else if (action === 'Withdraw'){}
@@ -143,4 +142,26 @@ function addAmount(accountName, amount){
     })
 
     console.log(chalk.green(`The amount of U$${amount} has been deposited into your account`))
+}
+
+//check account balance
+function getAccountBalance(){
+    inquirer.prompt([
+        {
+            name: 'accountName',
+            message: 'Whats the name of your account?'
+        }
+    ]).then((answer) => {
+        const accountName = answer['accountName']
+
+        //verify if account exists
+        if(!checkAccount(accountName)){
+            return getAccountBalance()
+        }
+
+        const accountData = getAccount(accountName)
+
+        console.log(chalk.bgBlue.black(`Your account balance is U$${accountData.balance}`))
+        operation()
+    })
 }
