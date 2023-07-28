@@ -234,8 +234,8 @@ function transfer() {
             message: 'From which account do you want to take de money?'
         }
     ]).then((answer) => {
-        const accountOrigin = answer['originAccountName']
-        if(!checkAccount(accountOrigin))
+        const originAccount = answer['originAccountName']
+        if(!checkAccount(originAccount))
             return transfer()
         
 
@@ -246,7 +246,7 @@ function transfer() {
             
             const valueToBeTransferred = answer['value']
 
-            if(getAccount(accountOrigin).balance < valueToBeTransferred){
+            if(getAccount(originAccount).balance < valueToBeTransferred){
                 console.log(chalk.bgRed.black('Unavailable value.'))
                 return transfer()
             }
@@ -259,7 +259,7 @@ function transfer() {
                 if(!checkAccount(destinAccount))
                     return transfer()
                 
-                removeAmount(accountOrigin, valueToBeTransferred)
+                removeAmount(originAccount, valueToBeTransferred)
                 addAmount(destinAccount, valueToBeTransferred)
                 operation()
                 
