@@ -9,3 +9,10 @@ src/4_NPM_FUNDAMENTAL/3_installing_packages/node_modules
 src/4_NPM_FUNDAMENTAL/4_dev_dependency/node_modules
 src/5_ACCOUNTS/node_modules
 src/5_ACCOUNTS/accounts
+src/6_EXPRESS/2_setup/node_modules
+src/6_EXPRESS/3_render_html/node_modules
+src/6_EXPRESS/4_nodemon/node_modules
+src/6_EXPRESS/5_middleware/node_modules
+src/6_EXPRESS/6_param_url/node_modules
+src/6_EXPRESS/7_data_post
+src/6_EXPRESS/8_route_module/node_modules
