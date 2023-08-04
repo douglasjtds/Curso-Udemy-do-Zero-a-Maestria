@@ -12,6 +12,9 @@ app.use(express.urlencoded({
 
 app.use(express.json())
 
+//static files
+app.use(express.static('public'))
+
 const basePath = path.join(__dirname, 'templates')
 
 app.use('/users', users)
