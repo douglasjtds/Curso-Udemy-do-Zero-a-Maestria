@@ -90,4 +90,13 @@ TEMPLATE ENGINE
 		- em um array podemos chamar os itens com: {{this }}
 		- e então cada um dos itens é acessado na view
 		- como o handlebars prega um template mais limpo, devemos mandar apenas o necessário para o frontend
-			
+	- with
+		- nos permite abstrair um objetivo
+		- ou seja, podemos acessar as propriedades sem nos referenciarmos sempre ao objeto antes
+		- a sintaxe é: {{#with objeto}}...{{/with}}
+		- desta maneira nosso código fica ainda mais simples
+	- partials
+		- são como mini templates, que precisam ser repetidos em diversos locais da nossa aplicação
+		- precisamos realizar algumas modificações na implementação do handlebars
+		- os partials geralmente ficam na views/partials
+		- e utilizamos a sintaxe {{> partial}} para chamá-lo no projeto
