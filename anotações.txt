@@ -85,4 +85,9 @@ TEMPLATE ENGINE
 	- é essencial para projetos que usam banco de dados, que não são estáticos
 	- tem diversos disponíveis: EJS, Pug e Handlebars, por exemplo
 	- todos atingem o mesmo objetivo, porém phá algumas diferenças de setup e funcionalidades
-	
+	- Estruturas de repetição:
+		- sintaxe é {{#each }} ... {{/each }}
+		- em um array podemos chamar os itens com: {{this }}
+		- e então cada um dos itens é acessado na view
+		- como o handlebars prega um template mais limpo, devemos mandar apenas o necessário para o frontend
+			
