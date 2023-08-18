@@ -100,3 +100,8 @@ TEMPLATE ENGINE
 		- precisamos realizar algumas modificações na implementação do handlebars
 		- os partials geralmente ficam na views/partials
 		- e utilizamos a sintaxe {{> partial}} para chamá-lo no projeto
+	- CSS com Handlebars e express
+		- a inclusão de CSS no handlebars é muito semelhante a que realizamos apenas com express
+		- precisamos definir a pasta dos arquivos estáticos
+		- e vamos linkar o CSS com o nosso layout em comum para todas as páginas
+		- isso torna possível a estilizar os projetos
