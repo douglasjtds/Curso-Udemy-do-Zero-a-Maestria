@@ -3,7 +3,9 @@
     <a href="/">Insert new book</a>
     {{#each books}}
         <div>
-            #{{this.id}} - <span class="bold">{{this.title}}</span> - {{this.pageqty}} pages
+            #{{this.id}} - 
+            <span class="bold"><a href="/books/{{this.id}}">{{this.title}}</a></span>
+            - {{this.pageqty}} pages
         </div>
     {{/each}}
 </div>
