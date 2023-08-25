@@ -50,7 +50,6 @@ h1 {
     padding: 5px;
     margin: 5px;
 }
-
 .bold {
     font-weight: bold;
 }
@@ -59,7 +58,10 @@ h1 {
 #book-page {
     padding: 2em;
 }
-
 #book-page .container {
     text-align: center;
+}
+
+.actions {
+    margin-top: 1em;
 }

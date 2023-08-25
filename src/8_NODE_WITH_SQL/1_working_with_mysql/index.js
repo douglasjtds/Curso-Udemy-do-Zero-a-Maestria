@@ -29,6 +29,7 @@ app.post('/books/insertbook', (req, res) => {
     conn.query(sqlQuery, function(err) {
         if (err){
             console.log(err)
+            return
         }
 
         res.redirect('/books')
@@ -45,8 +46,7 @@ app.get('/books', (req, res) => {
         }
 
         const books = data
-        console.log(books)
-
+        // console.log(books)
         res.render('books', { books })
     })
 })
@@ -68,6 +68,38 @@ app.get('/books/:id', (req,res) => {
         res.render('book', { book })
     })
 
+})
+
+app.get('/books/edit/:id', (req, res) => {
+    const id = req.params.id
+    const sqlQuery = `SELECT * FROM books WHERE id = ${id}`
+
+    conn.query(sqlQuery, function(err, data) {
+        if (err){
+            console.log(err)
+            return
+        }
+
+        const book = data[0]
+        res.render('editbook', { book })
+    })
+})
+
+app.post('/books/updatebook', (req, res) => {
+    const id = req.body.id
+    const title = req.body.title
+    const pageqty = req.body.pageqty
+
+    const sqlQuery = `UPDATE books SET title = '${title}', pageqty = ${pageqty} WHERE id = ${id}`
+
+    conn.query(sqlQuery, function(err){
+        if (err){
+            console.log(err)
+            return
+        }  
+
+        res.redirect('/books')
+    })
 })
 
 const conn = mysql2.createConnection({
