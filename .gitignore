@@ -27,3 +27,4 @@ src/7_TEMPLATE_ENGINE/7_with/node_modules
 src/7_TEMPLATE_ENGINE/8_partials/node_modules
 src/7_TEMPLATE_ENGINE/9_css/node_modules
 src/8_NODE_WITH_SQL/1_working_with_mysql/node_modules
+src/8_NODE_WITH_SQL/8_connection_pool/node_modules

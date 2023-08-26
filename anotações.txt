@@ -105,3 +105,5 @@ TEMPLATE ENGINE
 		- precisamos definir a pasta dos arquivos estáticos
 		- e vamos linkar o CSS com o nosso layout em comum para todas as páginas
 		- isso torna possível a estilizar os projetos
+
+Node.js com SQL
