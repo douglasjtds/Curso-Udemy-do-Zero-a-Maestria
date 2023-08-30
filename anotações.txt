@@ -107,3 +107,28 @@ TEMPLATE ENGINE
 		- isso torna possível a estilizar os projetos
 
 Node.js com SQL
+
+Sequelize
+	ORM 
+	- Object Relational Mapper (ORM)
+	- abstrai a complexidade das queries, para trabalharmos com métodos,
+	- nos concentramos nas regras de negócios e não nos comandos SQL
+	- uma ORM muito utilizada para node.js é a Sequelize
+	- em alguns casos uma ORM pode trazer prejuízos de performance
+	- a query pura executa mais rapidamente do que a ORM 
+	- e temos código "gerado", ou seja, não vemos por baixo dos panos
+	O que é o Sequelize?
+	- é uma ORM para node.js
+	- é baseada em promises (then, catch)
+	- tem integração com vários bancos relacionais, como o MySql
+	- precisamos sempre criar um Model, que é o reflexo da nossa tabela em uma classe
+	- precisamos instalar o pacote, já que é um módulo externo
+		- para instalar o Sequelize utilizamos o pacote sequelize
+		- e para conectar precisamos passar os mesmos dados que no outro pacote: banco, usuário e senha
+		- instanciando a classe Sequelize
+		- é possível chegar a conexão com o método authenticate
+	- para criar um Model temos que instanciar uma classe que representará uma tabela
+	- um Model User cria uma nova tabela chamada users
+	- colocamos os campos e os tipos dele como propriedades do Model
+	- futuramente ele será utilizado para as operações entre a aplicação e o banco
+	- o método sync faz a criação das tabelas baseada nos models
