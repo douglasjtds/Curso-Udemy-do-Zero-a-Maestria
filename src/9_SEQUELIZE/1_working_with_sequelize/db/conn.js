@@ -5,11 +5,11 @@ const sequelize = new Sequelize('nodesequelize', 'root', '', {
 })
 
 
-try {
-    sequelize.authenticate()
-    console.log('Succesfully connected with Sequelize.')
-} catch (err) {
-    console.log('Error to connect: ', err)
-}
+// try {
+//     sequelize.authenticate()
+//     console.log('Succesfully connected with Sequelize.')
+// } catch (err) {
+//     console.log('Error to connect: ', err)
+// }
 
 module.exports = sequelize
