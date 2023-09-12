@@ -137,3 +137,7 @@ Sequelize
 		que também requer o model, no nosso caso o User
 		- os dados vem em um objeto especial, para transformar em um array 
 		de objetos temos que inserir um parâmetro: que é o raw setado como true
+	- Relacionamentos:
+		- Em bancos relacionais podemos criar relacionamentos entre as tabelas...
+		- inserir um método de relacionamento em algum dos models que vai criar a relação
+		- uma coluna será criada representando relação, foreign key por exemplo
