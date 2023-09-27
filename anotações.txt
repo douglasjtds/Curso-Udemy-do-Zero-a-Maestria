@@ -141,3 +141,18 @@ Sequelize
 		- Em bancos relacionais podemos criar relacionamentos entre as tabelas...
 		- inserir um método de relacionamento em algum dos models que vai criar a relação
 		- uma coluna será criada representando relação, foreign key por exemplo
+
+MVC: Model View Controller
+	- é um padrão de arquitetura de software, que pode deixar nossas aplicações mais organizadas
+	- a aplicação é dividida em camadas, cada uma com sua responsabilidade
+	- Model:
+		- é a camada que vai interagir com o banco de dados
+		- normalmente interage com os arquivos da controller
+		- é comum que cada tabela seja um Model
+	- View: 
+		- é onde apresentamos os dados que estão no banco
+		- geralmente a view interage com a Controller, que é o meio de campos
+		- na view temos a interação com o usuário
+		- não deve-se ter lógica de negócio na view, ou o mínimo possível
+	- Controller:
+		- onde temos a interação entre Model e View
