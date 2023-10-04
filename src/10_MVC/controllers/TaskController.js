@@ -1,4 +1,4 @@
-const Tasks = require('../models/Task')
+const Task = require('../models/Task')
 
 module.exports = class TaskController {
     static createTask(req, res) {
@@ -13,21 +13,27 @@ module.exports = class TaskController {
             done: false
         }
 
-        await Tasks.create(task)
+        await Task.create(task)
 
         res.redirect('/tasks')
     }
 
     static async showTasks(req, res) {
-        const tasks = await Tasks.findAll({raw: true})
+        const tasks = await Task.findAll({raw: true})
 
         res.render('tasks/all', {tasks})
     }
 
     static async removeTask (req, res) {
         const id = req.body.id
-        await Tasks.destroy({where : {id: id}})
+        await Task.destroy({where : {id: id}})
 
         res.redirect('/tasks')
+    }
+
+    static async updateTask (req, res) {
+        const id = req.params.id
+        const task = await Task.findOne({where: {id:id}, raw: true })
+        res.render('tasks/edit', { task })
     }
 }
