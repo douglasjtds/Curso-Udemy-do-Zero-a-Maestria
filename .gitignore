@@ -31,3 +31,4 @@ src/8_NODE_WITH_SQL/8_connection_pool/node_modules
 src/8_NODE_WITH_SQL/9_prepare_query_sql_injection/node_modules
 src/9_SEQUELIZE/1_working_with_sequelize/node_modules
 src/10_MVC/node_modules
+src/11_THOUGHTS/node_modules
