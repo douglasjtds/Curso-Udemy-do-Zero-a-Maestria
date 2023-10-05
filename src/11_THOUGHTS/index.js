@@ -7,6 +7,16 @@ const flash = require ('express-flash')
 const app = express()
 const conn = require('./db/conn')
 
+// Models
+const Thought = require('./models/Thought')
+const User = require('./models/User')
+
+// Import Routes
+const thoughtsRoutes = require('./routes/thoughtsRoutes')
+
+// Import Controller
+const ThoughtController = require('./controllers/ThoughtController')
+
 // template engine
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
@@ -43,13 +53,19 @@ app.use(express.static('public'))
 
 // set session to res
 app.use((req, res, next) => {
-    if (res.session.userid){
+    if (req.session.userid){
         res.locals.session = req.session
     }
     next()
 })
 
+// Routes
+app.use('/thoughts', thoughtsRoutes)
+
+app.get('/', ThoughtController.showThoughts)
+
 conn
+    // .sync({force: true})
     .sync()
     .then(() => {
         app.listen(3000)
