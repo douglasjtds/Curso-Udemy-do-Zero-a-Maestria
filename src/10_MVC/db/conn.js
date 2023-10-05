@@ -10,7 +10,7 @@ try {
     console.log('Connected with MySQL!')
 
 } catch (error) {
-    console.log(`Not able to connect:  ${error}`)
+    console.log(`Unable to connect:  ${error}`)
 }
 
 module.exports = sequelize

@@ -4,7 +4,8 @@
   "description": "project similar to twitter where an user can post thoughts and another users can interact with it",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js localhost 3000"
   },
   "author": "Douglas Tertuliano",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "cookie-session": "^2.0.0",
     "express": "^4.18.2",
     "express-flash": "^0.0.2",
+    "express-handlebars": "^7.1.2",
     "express-session": "^1.17.3",
     "mysql2": "^3.6.1",
     "nodemon": "^3.0.1",
