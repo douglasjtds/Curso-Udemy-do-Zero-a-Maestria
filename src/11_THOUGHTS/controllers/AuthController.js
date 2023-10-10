@@ -23,7 +23,7 @@ module.exports = class AuthController {
         }
 
         // check if user exists
-        const checkIfUserExists = await User.findOne({ where: {email : email}})
+        const checkIfUserExists = await User.findOne({ where: { email : email }})
         if(checkIfUserExists){
             req.flash('message', 'E-mail is already in use.')
             res.render('auth/register')
@@ -35,11 +35,20 @@ module.exports = class AuthController {
         const hashedPassword = bcrypt.hashSync(password, salt)
         const user = { name, email, password: hashedPassword }
         try {
-            await User.create(user)
+            const createdUser = await User.create(user)
+
+            // initialize session
+            req.session.userid = createdUser.id
+
             req.flash('message', 'Registration completed successfully')
-            res.redirect('/')
+            req.session.save(() => {
+                res.redirect('/')
+            })
         } catch (err){console.log(err)}
+    }
 
-
+    static logout(req, res) {
+        req.session.destroy()
+        res.redirect('/login')
     }
 }

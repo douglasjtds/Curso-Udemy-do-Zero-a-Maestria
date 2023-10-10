@@ -1,5 +1,5 @@
 * { 
-    font-family: Helvetica;
+    font-family: Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #222;
@@ -12,18 +12,19 @@
 }
 
 #navbar {
-    padding: 1.2em 1.4em;
+    padding: 1.2em 2.4em;
     margin-bottom: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #222;
+    color: #fff;
     border-bottom: 1px solid #F6982D;
 }
 
 #navbar ul {
     display: flex;
-    list-style-type: disc;
+    list-style: none;
 }
 
 #navbar ul li {
@@ -32,6 +33,7 @@
 
 #navbar ul li a {
     text-decoration: none;
+    color: #fff;
     transition: 0.5s;
     font-weight: bold;
 }
@@ -69,7 +71,7 @@
     margin-bottom: 1em;
     color: #fff;
     border-left: 4px solid #F6982D;
-    padding: .3em;
+    padding: 0.3em;
     width: 100px;
 }
 .auth-container a {

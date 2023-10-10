@@ -17,8 +17,13 @@
         <ul>
             <li><a href="/">Thoughts</a></li>
             <!-- urls after authentication -->
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+            {{#if session.userid}}
+                <li><a href="/thoughts/dashboard">Dashboard</a></li>
+                <li><a href="/logout">Logout</a></li>
+            {{else}} {{!-- urls if not authenticated --}}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            {{/if}}
         </ul>
     </nav>
     <div class="container">
