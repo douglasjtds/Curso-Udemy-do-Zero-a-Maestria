@@ -9,6 +9,7 @@ module.exports = class AuthController {
 
     static async loginPost(req, res) {
         const {email, password} = req.body
+        
         // find user
         const user = await User.findOne({where: {email:email}})
         if (!user){
