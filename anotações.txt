@@ -156,3 +156,24 @@ MVC: Model View Controller
 		- não deve-se ter lógica de negócio na view, ou o mínimo possível
 	- Controller:
 		- onde temos a interação entre Model e View
+	
+NoSQL: 
+	- São bancos de dados focados em documentos (documents)
+	- a modelagem de dados com relacionamentos é opcional
+	- Não utilizamos queries e sim métodos de classes para trabalhar com os dados
+	- As tabelas não existem, temos as collections
+	- Não precisamos definir a estrutura da collection previamente
+	- MongoDB é um banco NoSQL
+	MongoDB:
+		- Um banco de dados orientado a documentos
+		-  os dados ficam salvos em estruturas parecidas com json
+		- frequentemente utilizado com node.js
+		- diferente do SQL temos índices primários e secundários
+		- utilizaremos um driver para conectar a nossa aplicação com o MongoDB, semelhante ao MySQL e sequelize
+		Principais entidades:
+			- Database: é onde ficam as collections e dados
+			- Collections: são como as tabelas nos bancos relacionais, nelas vamos inserir os dados
+			- Documents: são os dados, no MongoDB tem esta nomenclatura
+			- Collections podem ser criadas livremente a qualquer momento e não possuem colunas fixas para os dados
+			
+	
