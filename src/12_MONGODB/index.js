@@ -7,7 +7,7 @@ const productsRoutes = require('./routes/productsRoutes')
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
 
-//read body
+// read body
 app.use(
     express.urlencoded({
         extended: true

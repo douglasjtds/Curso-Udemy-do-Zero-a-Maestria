@@ -23,10 +23,10 @@ module.exports = class ProductController {
     static async getProduct(req, res) {
         const id = req.params.id
         const product = await Product.getProductById(id)
-        console.log(product)
-    
+        // console.log(product)
+
         res.render('products/product', { product })
-      }
+    }
 
     static async deleteProduct (req, res) {
         const id = req.params.id
@@ -49,7 +49,7 @@ module.exports = class ProductController {
         
         const product = new Product(name, image, price, description)
         
-        await product.updateProduct(id)
+        product.updateProduct(id)
         res.redirect('/')
     }
 }
