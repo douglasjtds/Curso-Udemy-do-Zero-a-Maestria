@@ -20,13 +20,11 @@ module.exports = class ProductController {
         res.redirect('/')
     }
 
-    // static async getProduct(req, res) {
-    //     const id = req.params.id
+    static async getProduct(req, res) {
+        const id = req.params.id
+        const product = await Product.getProductById(id)
+        console.log(product)
     
-    //     const product = await Product.getProduct ById(id)
-    
-    //     console.log(product)
-    
-    //     res.render('products/product', { product })
-    //   }
+        res.render('products/product', { product })
+      }
 }
