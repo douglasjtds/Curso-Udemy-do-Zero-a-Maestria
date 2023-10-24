@@ -176,4 +176,14 @@ NoSQL:
 			- Documents: são os dados, no MongoDB tem esta nomenclatura
 			- Collections podem ser criadas livremente a qualquer momento e não possuem colunas fixas para os dados
 			
-	
+ODM: Object Data Mapping
+	- Com o MongoDB utilizamos ODMs para deixar mais ágil o processo de trabalho com os dados
+	- um Model ficará responsável pela interação com um BD
+	- ODM mais utilizada para MongoDB é o Mongoose
+	- ORM e ODM tem funções e utilizações muito semelhantes
+	- o que é o Mongoose?
+		- ODM para MongoDB
+		- onde declaramos um model que faz as interações com a colection que ele corresponde
+		- definimos nesse Model, os dados e seus tipos, como estamos esperando que a collection fique
+		- isso se assemelha ao SQL e ajuda na organização/manutenção
+		- assim como nas ORMs, temos métodos prontos para a interação com o BD

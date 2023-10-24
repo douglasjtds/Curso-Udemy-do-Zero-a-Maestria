@@ -1,0 +1,10 @@
+<div class="product-page">
+    <a href="/">Back</a>
+    <h1>{{product.name}}</h1>
+    <p>Price: U${{product.price}}</p>
+    <img src="{{product.image}}" alt="{{product.name}}">
+    <p>Description: {{product.description}}</p>
+    <form action="/remove/{{product._id}}" method="POST">
+        <input type="submit" value="Delete" class="btn">
+    </form>
+</div>
