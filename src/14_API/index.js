@@ -11,7 +11,7 @@ app.use(express.json())
 
 //first endpoint
 app.get('/', (req, res) => {
-    res.json({ message: 'first route' })
+    res.status(200).json({ message: 'first route' })
 })
 
 app.post('/createproduct', (req, res) => {
@@ -21,7 +21,12 @@ app.post('/createproduct', (req, res) => {
     console.log(name)
     console.log(price)
 
-    res.json({message: `The product ${name} was created succesfully.`})
+    if (!name) {
+        res.status(422).json({message: "Name field is required."})
+        return
+    }
+
+    res.status(201).json({message: `The product ${name} was created succesfully.`})
 })
 
 app.listen(3000)
