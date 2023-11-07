@@ -187,3 +187,25 @@ ODM: Object Data Mapping
 		- definimos nesse Model, os dados e seus tipos, como estamos esperando que a collection fique
 		- isso se assemelha ao SQL e ajuda na organização/manutenção
 		- assim como nas ORMs, temos métodos prontos para a interação com o BD
+
+API: Application Programming Interface
+	- forma simples de comunicação entre aplicações
+	- não necessita de telas, respostas geralmente são em json
+	- indepentente do frontend, a API não possui ligação com o frontend
+	- baseadas em requisição e resposta
+	- podemos criar uma API com EXPRESS
+	REST e RESTful
+		- REST significa Representational State Transfer
+		- Um estilo de arquitetura, que define como as APIs devem ser criadas
+		- Seguindo todos os padrões a API é considerada RESTful
+		- Alguns dos pontos são: respostas uniformes, sem ligação de estado, cache de respostas e outros
+
+SPA: Single Page Application
+	- Frontend separado do backend, diferente dos monolitos
+
+Verbos HTTP:
+	- faz parte do REST
+	- métodos: GET, POST, PUT, DELETE, PATCH, etc...
+	- cada um representa uma ação na API, ou seja, são essenciais
+	- é muito importante que as nossas funcionalidades usem os métodos corretos
+	- enviamos os métodos atráves da requisição
