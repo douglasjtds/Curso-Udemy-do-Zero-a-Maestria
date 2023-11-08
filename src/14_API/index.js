@@ -22,7 +22,7 @@ app.post('/createproduct', (req, res) => {
     console.log(price)
 
     if (!name) {
-        res.status(422).json({message: "Name field is required."})
+        res.status(422).json({message: 'Name field is required.'})
         return
     }
 

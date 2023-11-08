@@ -35,3 +35,5 @@ src/11_THOUGHTS/node_modules
 src/12_MONGODB/node_modules
 src/13_MONGOOSE/node_modules
 src/14_API/node_modules
+src/15_GET_A_PET/backend/node_modules
+src/15_GET_A_PET/backend/public/images
