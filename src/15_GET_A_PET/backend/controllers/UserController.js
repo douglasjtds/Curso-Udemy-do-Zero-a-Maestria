@@ -133,7 +133,7 @@ module.exports = class UserController {
   }
 
   static async editUser(req, res) {
-    const id = req.params.id;
+    // const id = req.params.id;
 
     // check if user exists
     const token = getToken(req);
@@ -141,6 +141,10 @@ module.exports = class UserController {
 
     const { name, email, phone, password, confirmpassword } = req.body;
     let image = '';
+
+    if (req.file) {
+        image = req.file.filename
+    }
 
     // validations
     if (!name) {
@@ -153,12 +157,19 @@ module.exports = class UserController {
       res.status(422).json({ message: 'The email field is required!' });
       return;
     }
+    // check if user exists
     const userExists = await User.findOne({ email: email });
+
     if (user.email !== email && userExists) {
       res.status(422).json({ message: 'Please, user another email!' });
       return;
     }
     user.email = email;
+
+    if (image){
+        const imageName = req.file.filename
+        user.image = imageName
+    }
 
     if (!phone) {
       res.status(422).json({ message: 'The phone field is required!' });
@@ -166,16 +177,17 @@ module.exports = class UserController {
     }
     user.phone = phone;
 
+    // check if password match
     if (password !== confirmpassword) {
       res.status(422).json({
         message:
           'The password field and the confirmation password field must be the same!',
       });
-      return;
     } else if (password === confirmpassword && password != null) {
       // creating password
       const salt = await bcrypt.genSalt(12);
-      const passwordHash = await bcrypt.hash(password, salt);
+      const reqPassword = req.body.password
+      const passwordHash = await bcrypt.hash(reqPassword, salt);
 
       user.password = passwordHash;
     }
@@ -187,10 +199,9 @@ module.exports = class UserController {
         { $set: user },
         { new: true }
       );
-      res.status(200).json({message: 'User successfully updated!'})
+      res.status(200).json({message: 'User successfully updated!', data: updatedUser })
     } catch (error) {
       res.status(500).json({ message: error });
-      return;
     }
   }
 };
