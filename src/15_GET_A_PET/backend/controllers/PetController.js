@@ -34,7 +34,7 @@ module.exports = class PetController {
       return;
     }
 
-    console.log(images)
+    console.log(images);
     if (typeof images !== 'undefined' && images.length === 0) {
       res.status(422).json({ message: 'The image field is required!' });
       return;
@@ -72,5 +72,13 @@ module.exports = class PetController {
     } catch (error) {
       res.status(500).json({ message: error });
     }
+  }
+
+  static async getAll(req, res) {
+    const pets = await Pet.find().sort('-createdAt');
+
+    res.status(200).json({
+      pets: pets,
+    });
   }
 };
