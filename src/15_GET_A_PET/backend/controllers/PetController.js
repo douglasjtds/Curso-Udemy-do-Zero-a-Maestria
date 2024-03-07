@@ -153,4 +153,71 @@ module.exports = class PetController {
 
     res.status(200).json({message: "Pet successfully removed!"})
   }
+
+  static async updatePet(req, res) {
+    const id = req.params.id
+    const { name, age, weight, color, available } = req.body
+    const images = req.files
+    const updatedData = {}
+
+    // check if pet exists
+    const pet = await Pet.findOne({ _id: id });
+    if (!pet) {
+      res.status(404).json({ message: 'Pet not found!' });
+      return
+    }
+
+    // check if logged in user registered the pet
+    const token = getToken(req)
+    const user = await getUserByToken(token)
+    if (pet.user._id.toString() !== user._id.toString()) {
+      res.status(422).json({message: "There was an error processing your request, please try again later!"})
+      console.log("Logged user cannot update this pet!")
+      return
+    }
+
+
+    // validations
+    if (!name) {
+      res.status(422).json({ message: 'The name field is required!' });
+      return;
+    } else {
+      updatedData.name = name
+    }
+
+    if (!age) {
+      res.status(422).json({ message: 'The age field is required!' });
+      return;
+    } else {
+      updatedData.age = age
+    }
+
+    if (!weight) {
+      res.status(422).json({ message: 'The weight field is required!' });
+      return;
+    } else {
+      updatedData.weight = weight
+    }
+
+    if (!color) {
+      res.status(422).json({ message: 'The color field is required!' });
+      return;
+    } else {
+      updatedData.color = color
+    }
+
+    if (typeof images !== 'undefined' && images.length === 0) {
+      res.status(422).json({ message: 'The image field is required!' });
+      return;
+    } else {
+      updatedData.images = []
+      images.map((image) => {
+        updatedData.images.push(image.filename)
+      })
+    }
+
+    await Pet.findByIdAndUpdate(id, updatedData)
+
+    res.status(200).json({message: 'Pet successfully updated!'})
+  }
 };
