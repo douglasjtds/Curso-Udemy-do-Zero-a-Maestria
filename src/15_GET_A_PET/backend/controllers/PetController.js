@@ -220,4 +220,43 @@ module.exports = class PetController {
 
     res.status(200).json({message: 'Pet successfully updated!'})
   }
+
+  static async schedule(req, res) {
+    const id = req.params.id
+
+    // check if pet exists
+    const pet = await Pet.findOne({ _id: id });
+    if (!pet) {
+      res.status(404).json({ message: 'Pet not found!' });
+      return
+    }
+
+    // check if logged in user registered the pet
+    const token = getToken(req)
+    const user = await getUserByToken(token)
+    if (pet.user._id.equals(user._id)) {
+      res.status(422).json({message: "You can't schedule a visit for your own pet!"})
+      return
+    }
+
+    // check if user has already scheduled a visit
+    if (pet.adopter) {
+      if (pet.adopter._id.equals(user._id)) {
+        res.status(422).json({
+          message: "You've already scheduled a visit to this pet!"
+        })
+        return
+      }
+    }
+
+    // add user to pet
+    pet.adopter = {
+      _id: user._id,
+      name: user.name,
+      image: user.image
+    }
+    await Pet.findByIdAndUpdate(id, pet)
+
+    res.status(200).json({message: `Visit succesfully scheduled, contact ${pet.user.name} by his phone ${pet.user.phone}`})
+  }
 };
