@@ -259,4 +259,30 @@ module.exports = class PetController {
 
     res.status(200).json({message: `Visit succesfully scheduled, contact ${pet.user.name} by his phone ${pet.user.phone}`})
   }
+
+
+  static async concludeAdoption(req, res) {
+    const id = req.params.id
+
+    // check if pet exists
+    const pet = await Pet.findOne({ _id: id });
+    if (!pet) {
+      res.status(404).json({ message: 'Pet not found!' });
+      return
+    }
+
+    // check if logged in user registered the pet
+    const token = getToken(req)
+    const user = await getUserByToken(token)
+    if (pet.user._id.toString() !== user._id.toString()) {
+      res.status(422).json({message: "There was an error processing your request, please try again later!"})
+      console.log("Logged user cannot update this pet!")
+      return
+    }
+    
+    pet.available = false
+    await Pet.findByIdAndUpdate(id, pet)
+
+    res.status(200).json({pet: pet, message: 'Congrats! The adoption cycle has concluded succesfully!'})
+  }
 };
