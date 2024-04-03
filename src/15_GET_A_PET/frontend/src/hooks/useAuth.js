@@ -41,6 +41,22 @@ export default function useAuth() {
         localStorage.setItem('token', JSON.stringify(data.token))
         history.push('/')
     }
+
+    async function login (user){
+        let msgText = 'Login completed successfully'
+        let msgType = 'success'
+
+        try {
+            const data = await api.post('/users/login', user).then((response) => {
+                return response.data
+            })
+            await authUser(data)
+        } catch (error) {
+            msgText = error.response.data.message
+            msgType = 'error'
+        }
+        setFlashMessage(msgText, msgType)
+    }
     
     function logout () {
         const msgText = 'Logout completed successfully'
@@ -49,10 +65,10 @@ export default function useAuth() {
         setAuthenticated(false)
         localStorage.removeItem('token')
         api.defaults.headers.Authorization = undefined
-        history.push('/')
+        history.push('/login')
         
         setFlashMessage(msgText, msgType)
     }
 
-    return { authenticated, register , logout}
+    return { authenticated, register , logout, login }
 }
