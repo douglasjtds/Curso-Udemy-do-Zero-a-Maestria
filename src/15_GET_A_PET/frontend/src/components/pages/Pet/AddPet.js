@@ -3,6 +3,9 @@ import styles from './AddPet.module.css'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
+/* components */
+import PetForm from '../../form/PetForm'
+
 /* hooks */
 import useFlashMessage from '../../../hooks/useFlashMessage'
 
@@ -13,7 +16,7 @@ function AddPet () {
                 <h1>Register a pet</h1>
                 <p>It will be available for adoption later</p>
             </div>
-            <p>formulário</p>
+            <PetForm btnText="Register pet"/>
         </section>
     )
 }
